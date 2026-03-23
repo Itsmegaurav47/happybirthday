@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Namita 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--sky:#d4eaf7;--pink:#f5c6d0;--green:#a8d5ba;--gold:#f0d9a0;
+--brown:#8b6f4e;--dark:#4a3728;--cream:#fdf6ec;--rose:#e8a0b4;
+--blue:#7bb5d3;--lav:#c9b8d9;--peach:#f7d1b5;--white:#fefcf8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Quicksand',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes drift{from{transform:translateX(-250px)}to{transform:translateX(calc(100vw + 250px))}}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg) translateX(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg) translateX(80px);opacity:0}}
+@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(245,198,210,0.3)}50%{box-shadow:0 0 35px rgba(245,198,210,0.7)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.15)}28%{transform:scale(1)}42%{transform:scale(1.1)}56%{transform:scale(1)}}
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+/* LOADING */
+#loader{position:fixed;inset:0;background:linear-gradient(135deg,var(--pink),var(--sky),var(--lav));display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity 1.5s,visibility 1.5s}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+#loader h1{font-family:'Caveat',cursive;font-size:clamp(2rem,5vw,3.5rem);color:var(--dark);animation:pulse 2s ease-in-out infinite;text-align:center;padding:0 20px}
+#loader p{color:var(--brown);margin-top:12px;font-size:1rem}
+
+/* PETALS */
+.petal-layer{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden}
+.petal{position:absolute;border-radius:50% 0 50% 0;animation:fall linear infinite}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:rgba(253,246,236,0.92);backdrop-filter:blur(12px);z-index:9000;padding:10px 0;border-bottom:2px solid var(--pink);display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+nav a{font-family:'Caveat',cursive;font-size:1.1rem;color:var(--brown);text-decoration:none;padding:5px 14px;border-radius:20px;transition:all .3s}
+nav a:hover,nav a.active{background:var(--pink);color:var(--dark)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px;background:linear-gradient(180deg,var(--sky) 0%,var(--cream) 55%,var(--peach) 100%);position:relative;overflow:hidden}
+.cloud{position:absolute;background:rgba(255,255,255,0.5);border-radius:50%;filter:blur(2px)}
+.cloud::before{content:'';position:absolute;background:inherit;border-radius:50%}
+.c1{width:200px;height:55px;top:8%;left:-5%;animation:drift 28s linear infinite}.c1::before{width:90px;height:45px;top:-22px;left:35px}
+.c2{width:160px;height:45px;top:22%;right:-8%;animation:drift 33s linear infinite reverse}.c2::before{width:75px;height:38px;top:-18px;left:25px}
+.c3{width:180px;height:48px;top:14%;left:35%;animation:drift 38s linear infinite}.c3::before{width:85px;height:42px;top:-20px;left:30px}
+.hero-wrap{position:relative;z-index:2}
+.hero-wrap h1{font-family:'Caveat',cursive;font-size:clamp(2.5rem,7vw,5.5rem);color:var(--dark);animation:fadeUp 1.2s .3s both}
+.hero-wrap .jp{font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--brown);font-weight:300;letter-spacing:3px;animation:fadeUp 1.2s .8s both}
+.hero-wrap .age{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--rose);margin-top:18px;animation:fadeUp 1.2s 1.2s both}
+.hero-wrap .intro{margin-top:22px;font-size:1.05rem;color:var(--brown);max-width:500px;line-height:1.9;animation:fadeUp 1.2s 1.5s both}
+.scroll-hint{margin-top:35px;font-size:.95rem;color:var(--brown);opacity:.6;animation:float 3s ease-in-out infinite,fadeUp 1.2s 2s both}
+
+/* SECTIONS */
+.sec{padding:80px 20px;max-width:850px;margin:0 auto}
+.sec-title{font-family:'Caveat',cursive;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--dark);text-align:center;margin-bottom:12px}
+.sec-sub{text-align:center;color:var(--brown);font-size:.95rem;margin-bottom:45px;font-weight:300}
+.divider{text-align:center;font-size:1.8rem;padding:15px;color:var(--pink);letter-spacing:18px}
+
+/* STORYBOOK */
+#storybook-wrap{background:linear-gradient(180deg,var(--cream),var(--white) 40%,var(--gold) 100%);padding-top:90px}
+.page{background:var(--white);border-radius:18px;padding:35px 30px;margin-bottom:35px;box-shadow:0 6px 28px rgba(139,111,78,.1);border:1px solid rgba(240,217,160,.35);position:relative;opacity:0;transform:translateY(35px);transition:opacity .7s,transform .7s}
+.page.vis{opacity:1;transform:translateY(0)}
+.page .ch{font-family:'Caveat',cursive;font-size:1rem;color:var(--rose);text-transform:uppercase;letter-spacing:3px;margin-bottom:6px}
+.page h3{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--dark);margin-bottom:12px}
+.page .icon{font-size:2.3rem;display:block;text-align:center;margin-bottom:12px}
+.page p{font-size:1.02rem;line-height:1.9;color:var(--brown);font-weight:300}
+.page::after{content:'🌸';position:absolute;bottom:12px;right:18px;font-size:1rem;opacity:.35}
+
+/* COUNTDOWN */
+#countdown-wrap{background:linear-gradient(180deg,var(--gold),var(--pink) 60%,var(--lav) 100%);padding-top:70px;text-align:center}
+.countdown-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:10px}
+.cd-box{background:var(--white);border-radius:16px;padding:20px 28px;min-width:100px;box-shadow:0 4px 18px rgba(139,111,78,.1)}
+.cd-box .num{font-family:'Caveat',cursive;font-size:2.8rem;color:var(--rose);line-height:1}
+.cd-box .lbl{font-size:.8rem;color:var(--brown);margin-top:4px;font-weight:500}
+
+/* LOVE JAR */
+#jar-wrap{background:linear-gradient(180deg,var(--lav),var(--sky) 50%,var(--cream) 100%);padding-top:70px;text-align:center}
+.jar-outer{position:relative;width:240px;height:310px;margin:0 auto 25px;cursor:pointer}
+.jar-lid{width:65%;height:22px;background:linear-gradient(135deg,var(--brown),#a68a6a);border-radius:7px 7px 0 0;margin:0 auto;position:relative;top:-1px;z-index:3}
+.jar-glass{width:100%;height:100%;background:rgba(255,255,255,.3);border:3px solid rgba(200,180,160,.45);border-radius:14px 14px 38px 38px;position:relative;overflow:hidden;transition:transform .3s;backdrop-filter:blur(4px)}
+.jar-glass:hover{transform:scale(1.03)}
+.jar-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Caveat',cursive;font-size:1.2rem;color:var(--dark);text-align:center;z-index:2;pointer-events:none}
+.hearts-fill{position:absolute;bottom:0;width:100%;height:55%;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:2px;padding:8px;z-index:1}
+.hearts-fill span{font-size:.7rem;animation:float 3s ease-in-out infinite}
+.jar-hint{font-size:.9rem;color:var(--brown);opacity:.7;margin-top:8px}
+.note-area{min-height:130px;display:flex;align-items:center;justify-content:center;padding:18px}
+.note-card{background:var(--white);border-radius:14px;padding:26px 30px;max-width:480px;box-shadow:0 6px 22px rgba(139,111,78,.1);border-left:4px solid var(--pink);animation:fadeUp .5s ease}
+.note-card p{font-size:1.1rem;line-height:1.8;color:var(--dark)}
+.note-card .nnum{font-family:'Caveat',cursive;font-size:.85rem;color:var(--rose);margin-top:8px}
+
+/* SONG PLAYER */
+#player-wrap{background:linear-gradient(180deg,var(--cream),var(--peach) 60%,var(--pink) 100%);padding-top:70px}
+.player-card{background:var(--white);border-radius:20px;padding:35px;box-shadow:0 8px 30px rgba(139,111,78,.12);text-align:center;max-width:550px;margin:0 auto}
+.vinyl{width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--dark) 18%,var(--brown) 19%,var(--brown) 22%,#5a4535 23%,#5a4535 38%,var(--brown) 39%,var(--brown) 41%,#5a4535 42%,#5a4535 58%,var(--brown) 59%,var(--brown) 61%,#5a4535 62%,#5a4535 78%,var(--brown) 79%);margin:0 auto 20px;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:all .3s}
+.vinyl.spinning{animation:spin 3s linear infinite}
+.vinyl-label{width:42px;height:42px;border-radius:50%;background:var(--pink);position:relative;top:-91px;margin:0 auto -42px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.player-card h3{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--dark);margin-bottom:5px}
+.player-card .song-sub{font-size:.9rem;color:var(--rose);margin-bottom:18px}
+.play-btn{width:60px;height:60px;border-radius:50%;border:3px solid var(--rose);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;transition:all .3s;font-size:1.5rem}
+.play-btn:hover{background:var(--pink);transform:scale(1.08)}
+.progress-wrap{width:100%;height:6px;background:rgba(139,111,78,.15);border-radius:3px;margin:12px 0 6px;cursor:pointer;position:relative}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--rose),var(--pink));border-radius:3px;width:0%;transition:width .1s linear}
+.time-row{display:flex;justify-content:space-between;font-size:.78rem;color:var(--brown)}
+
+/* LETTER */
+#letter-wrap{min-height:80vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--pink),var(--lav) 50%,var(--sky) 100%);text-align:center;padding:60px 20px}
+.letter{max-width:620px}
+.letter h2{font-family:'Caveat',cursive;font-size:clamp(2rem,5vw,3.2rem);color:var(--dark);margin-bottom:22px}
+.letter p{font-size:1.05rem;line-height:2;color:var(--dark);font-weight:300;margin-bottom:16px}
+.letter .sig{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--brown);margin-top:28px}
+.letter .jpfinal{font-family:'Noto Serif JP',serif;font-size:1.1rem;color:var(--rose);margin-top:10px}
+
+/* PHOTO PLACEHOLDER */
+.photo-slot{width:100%;max-width:350px;height:220px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--lav));margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:'Caveat',cursive;font-size:1.1rem;color:var(--brown);border:3px dashed rgba(139,111,78,.2)}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+nav{gap:3px;padding:7px 4px}nav a{font-size:.85rem;padding:4px 9px}
+.page{padding:22px 18px}
+.player-card{padding:25px 18px}
+.jar-outer{width:200px;height:260px}
+.cd-box{padding:14px 18px;min-width:80px}.cd-box .num{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <h1>Something special is opening for you... 🌸</h1>
+  <p>एक छिन पर्ख, मुटु...</p>
+</div>
+
+<!-- PETALS -->
+<div class="petal-layer" id="petals"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero">🏠</a>
+  <a href="#storybook-wrap">Our Story</a>
+  <a href="#countdown-wrap">Countdown</a>
+  <a href="#jar-wrap">Love Jar</a>
+  <a href="#player-wrap">Our Song</a>
+  <a href="#letter-wrap">💌</a>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section id="hero">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <div class="hero-wrap">
+    <h1>Happy Birthday, Namita 🌸</h1>
+    <div class="jp">お誕生日おめでとう、ナミタ</div>
+    <div class="age">March 23, 2026 — Turning 23 ✨</div>
+    <p class="intro">
+      This is not just a birthday wish, Mutu.<br>
+      This is a little world I built for you —<br>
+      our memories, my love, and a few surprises.<br>
+      Scroll down to begin... 🌿
+    </p>
+    <div class="scroll-hint">↓ scroll to begin our story ↓</div>
+  </div>
+</section>
+
+<!-- ======== STORYBOOK ======== -->
+<div id="storybook-wrap">
+<div class="sec">
+  <h2 class="sec-title">📖 Our Fairy Tale</h2>
+  <p class="sec-sub">The story of a boy, a girl, and the miles between them that never mattered</p>
+
+  <div class="page" data-a>
+    <span class="icon">📱</span>
+    <div class="ch">Chapter One</div>
+    <h3>Once Upon a Swipe</h3>
+    <p>About four years ago, in the little digital world of an app called Tantan, a boy's thumb paused. Among all the faces that blurred past, one stopped him completely — a girl from Jhapa with a smile that felt like sunshine breaking through monsoon clouds. He didn't know it yet, but that single pause would change the entire direction of his life. Her name was Namita, and she was about to become his whole world.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">💬</span>
+    <div class="ch">Chapter Two</div>
+    <h3>Two Years of "Almost"</h3>
+    <p>For two years, they danced around each other — talking, then not talking, then talking again. On and off, like the flickering lights of Kathmandu during load-shedding. Sometimes the universe has its own timeline, and theirs wasn't ready yet. But the thread between them never fully broke. No matter how many times the conversation paused, something always pulled them back. The universe was patient, even when they weren't.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">🌙</span>
+    <div class="ch">Chapter Three</div>
+    <h3>Sleepless Nights & Slow Falling</h3>
+    <p>Somewhere between the on-and-offs, they started talking all night. Not because they had to — but because neither could say goodbye first. They shared everything — silly things, deep things, dreams, fears. She watched Devdas and told him — he said "me too!" and they both cried about it. She started reading books just to impress him, and he pretended not to notice — but his heart was already stolen. No plan, no strategy. Just two people falling without a parachute.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">🏔️</span>
+    <div class="ch">Chapter Four</div>
+    <h3>Seven Days Before the Sky</h3>
+    <p>Then came the week that changed everything. Just seven days before she had to board a flight to Japan, Namita came to Kathmandu. They finally met — face to face, heart to heart. The boy who had only known her through a screen suddenly found her standing right in front of him, more real and more beautiful than any message could carry. His hands were shaking. He couldn't even speak at first. But they didn't need words — not yet.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">🌄</span>
+    <div class="ch">Chapter Five</div>
+    <h3>Nagarkot — Where Forever Started</h3>
+    <p>They drove up to Nagarkot, where the mountains hold the sky. On their very first date — a night stay above the clouds — something shifted in the universe. They fit together like two opposite ends of a puzzle that had been searching for each other. Under those Himalayan stars, he kissed her for the first time. And they made a promise: "Kahilei nachod." "Kahilei chhoddina." That promise echoes in every breath he takes, still, to this day.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">✈️</span>
+    <div class="ch">Chapter Six</div>
+    <h3>Two Flights, Two Worlds</h3>
+    <p>Seven days. That's all they had. But those seven days held a lifetime of memories. Then she flew east — to Japan. Months later, he flew west — to America. Omiya and Albany, separated by 10,800 kilometers and fourteen hours. The airport goodbye broke something inside him. But love doesn't care about distance. It just keeps showing up — in a good morning text that arrives at midnight, in a video call that starts with a fight and ends with "I love you."</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">💪</span>
+    <div class="ch">Chapter Seven</div>
+    <h3>The Storms We Weathered</h3>
+    <p>Let's be honest — it wasn't always beautiful. They fought. A lot. About time zones, about silences that stretched too long, about insecurities that crept in during lonely nights. She carried financial struggles and family pressure; he carried the weight of being lost — too introverted, too directionless, drinking too much beer. But here's what matters: they never gave up. She pushed him to go to the gym, to find a direction, to become better. And he stood beside her through every battle, every insecurity, every tear. They didn't just survive the storms — they grew through them.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">🧩</span>
+    <div class="ch">Chapter Eight</div>
+    <h3>Two Opposite Pieces, One Perfect Picture</h3>
+    <p>He's the perfectionist, the overthinker, the one who plans five steps ahead. She's the warm one, the carefree spirit, the one who walks into a room and makes everyone feel like they belong. He's smart; she's wise. He's careful; she's brave. She taught him what real love feels like — not the movie kind, but the kind that stays through fights and distance and exhaustion. She was his first love. His first real relationship. His first experience of being chosen completely. Together, they don't just complete each other — they make each other better.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">🌟</span>
+    <div class="ch">Chapter Nine</div>
+    <h3>The Strongest Girl He Knows</h3>
+    <p>She handles everything on her own — this girl from a simple family in Jhapa who dreamed of giving her parents a better life. The middle child who carries more weight than anyone sees. She went to Japan alone, studied hard, passed her N2, graduated gaako, and is now pursuing kaigosenmon gakko. With her own hard-earned money, she sent her father an iPhone — not because he asked, but because his smile is her biggest reward. She never keeps anything in her heart. She is raw, real, genuine. She is the most authentic person he has ever met. And he loves every single part of her — especially the parts she thinks are flaws.</p>
+  </div>
+
+  <div class="page" data-a>
+    <span class="icon">♾️</span>
+    <div class="ch">Chapter Ten</div>
+    <h3>To Be Continued... with Gaurangi</h3>
+    <p>Sometimes he closes his eyes and imagines a little house, filled with her laughter. And a tiny girl running through the rooms — their Gaurangi. She'll have her mother's eyes and her father's stubborn spirit. The pages ahead are blank and beautiful, waiting to be filled with reunions, new adventures, and one day — no more distance at all. This fairy tale doesn't end here, Mutu. Because the best stories never do. Everything he's doing — the PhD, the gym, the late nights — it's all for this future. For her. For them. For Gaurangi. 🌸</p>
+  </div>
+
+</div>
+</div>
+
+<div class="divider">🌸 🌿 🌸</div>
+
+<!-- ======== DAYS TOGETHER COUNTDOWN ======== -->
+<div id="countdown-wrap">
+<div class="sec">
+  <h2 class="sec-title">⏳ Us, In Numbers</h2>
+  <p class="sec-sub">Since we first said "I love you" at Nagarkot</p>
+  <div class="countdown-grid" id="cdGrid"></div>
+  <p style="margin-top:25px;font-size:1rem;color:var(--dark);font-weight:300;">...and counting. Every single one spent loving you. 💕</p>
+</div>
+</div>
+
+<div class="divider">🌸 🌿 🌸</div>
+
+<!-- ======== LOVE JAR ======== -->
+<div id="jar-wrap">
+<div class="sec">
+  <h2 class="sec-title">🫙 365 Reasons I Love You</h2>
+  <p class="sec-sub">You always ask me "Why do you love me?"<br>Here are 365 answers — one for every day until your next birthday.</p>
+
+  <div class="jar-outer" id="jar" onclick="pullReason()">
+    <div class="jar-lid"></div>
+    <div class="jar-glass">
+      <div class="jar-text">Tap me 💕</div>
+      <div class="hearts-fill" id="hFill"></div>
+    </div>
+  </div>
+  <p class="jar-hint">✨ Tap the jar to pull a reason ✨</p>
+  <div class="note-area" id="noteArea"></div>
+</div>
+</div>
+
+<div class="divider">🌸 🌿 🌸</div>
+
+<!-- ======== SONG PLAYER ======== -->
+<div id="player-wrap">
+<div class="sec">
+  <h2 class="sec-title">🎵 A Song Only For You</h2>
+  <p class="sec-sub">"तिम्रै लागि" — Written and created just for you, Mutu</p>
+
+  <div class="player-card">
+    <div class="vinyl" id="vinyl"></div>
+    <div class="vinyl-label">🌸</div>
+    <h3>तिम्रै लागि</h3>
+    <p class="song-sub">Written by your Baby — for his Mutu</p>
+    <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+    <div class="progress-wrap" id="progWrap" onclick="seekAudio(event)">
+      <div class="progress-bar" id="progBar"></div>
+    </div>
+    <div class="time-row">
+      <span id="curTime">0:00</span>
+      <span id="durTime">0:00</span>
+    </div>
+    <p style="margin-top:18px;font-size:.88rem;color:var(--brown);font-weight:300;line-height:1.7;">
+      Every word in this song is true.<br>
+      From Jhapa to Tantan to Nagarkot to our future with Gaurangi.<br>
+      This is our story — in music. 🎶
+    </p>
+  </div>
+  <audio id="audio" preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+</div>
+</div>
+
+<div class="divider">🌸 🌿 🌸</div>
+
+<!-- ======== FINAL LETTER ======== -->
+<section id="letter-wrap">
+  <div class="letter">
+    <h2>My Dearest Mutu,</h2>
+    <p>
+      You always ask me — "Why do you love me? I don't have a strong family background. I don't have the education you have. What do you even see in me?"
+    </p>
+    <p>
+      Mutu, listen to me carefully. I don't love you for your background or your degree. I love you because you are the most genuine, caring, and brave person I have ever known. You carry your family's dreams on your shoulders without complaining. You handle life alone in a country far from home and still find time to love me through all my mess.
+    </p>
+    <p>
+      Before you, I was a lost boy — no direction, too many beers, no idea what love even meant. You didn't just enter my life — you rebuilt it. You gave me purpose. You gave me a reason to go to the gym, to chase my PhD, to become someone worth being.
+    </p>
+    <p>
+      On your 23rd birthday, I want you to know:<br>
+      <strong>You are enough. You were always enough.</strong><br>
+      Across 10,800 kilometers, across every fight and every tear —<br>
+      my heart beats next to yours. Always.
+    </p>
+    <p>
+      I'm doing all of this — every late night, every hard day — for us. For our future. For the little house with your laughter and Gaurangi running through the rooms.
+    </p>
+    <p>
+      Happy Birthday, Namita.<br>My baby. My mutu. My first love. My only love. 🌸
+    </p>
+    <div class="sig">Forever yours, Baby ❤️</div>
+    <div class="jpfinal">ずっとそばにいるよ — I'll always be by your side</div>
+  </div>
+</section>
+
+<script>
+// ====== PETALS ======
+const petC=document.getElementById('petals');
+for(let i=0;i<18;i++){const p=document.createElement('div');p.className='petal';p.style.left=Math.random()*100+'%';p.style.width=(8+Math.random()*10)+'px';p.style.height=p.style.width;p.style.animationDuration=(5+Math.random()*8)+'s';p.style.animationDelay=Math.random()*6+'s';p.style.opacity=.2+Math.random()*.4;const c=['rgba(245,198,210,.6)','rgba(255,220,230,.5)','rgba(201,184,217,.4)','rgba(168,213,186,.3)'];p.style.background=c[Math.floor(Math.random()*c.length)];petC.appendChild(p)}
+
+// ====== LOADER ======
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide')},2200)});
+
+// ====== SCROLL ANIM ======
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.12});
+document.querySelectorAll('[data-a]').forEach(el=>obs.observe(el));
+
+// ====== NAV ACTIVE ======
+window.addEventListener('scroll',()=>{
+  let c='';
+  document.querySelectorAll('[id]').forEach(s=>{if(s.offsetTop-250<=window.scrollY)c=s.id});
+  document.querySelectorAll('nav a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)});
+});
+
+// ====== COUNTDOWN ======
+(function(){
+  // Approximate date of Nagarkot (first I love you) — roughly 2 years ago
+  const start=new Date('2024-01-15');
+  const now=new Date();
+  const diff=now-start;
+  const days=Math.floor(diff/864e5);
+  const hours=days*24;
+  const mins=hours*60;
+  const grid=document.getElementById('cdGrid');
+  const items=[
+    {n:days,l:'Days Together'},
+    {n:hours.toLocaleString(),l:'Hours of Love'},
+    {n:mins.toLocaleString(),l:'Minutes of Missing You'},
+    {n:'∞',l:'Reasons I Love You'},
+  ];
+  items.forEach(i=>{
+    grid.innerHTML+=`<div class="cd-box"><div class="num">${i.n}</div><div class="lbl">${i.l}</div></div>`;
+  });
+})();
+
+// ====== 365 REASONS ======
+const R=[
+// HER PERSONALITY & CHARACTER (1-50)
+"I love how you always care for me — even when I forget to care for myself.",
+"I love that you are the most genuine person I have ever met. You never pretend.",
+"I love your honesty. When you feel something, you say it. No games, no masks.",
+"I love that you never keep anything in your heart — you let it all out, and that's brave.",
+"I love your compassion. You feel other people's pain like it's your own.",
+"I love your fun personality — you can make any moment lighter and brighter.",
+"I love how outgoing you are. You light up every room, even through a video call.",
+"I love your warmth. People feel safe around you because you make them feel seen.",
+"I love that you're real. In a world full of pretending, you're just... you.",
+"I love your courage — the quiet kind that doesn't ask for applause.",
+"I love your laugh. Even through a phone speaker across oceans, it heals me.",
+"I love the way you say 'baby' — it hits different every single time.",
+"I love your stubbornness — it frustrates me sometimes, but it also shows your strength.",
+"I love how emotional you get — it means you feel deeply, and that's beautiful.",
+"I love that you're not afraid to cry. It takes real strength to be vulnerable.",
+"I love your insecurities — every single one. They make you human and they make you mine.",
+"I love your imperfections. They're not flaws — they're the parts that make you real.",
+"I love that you can be both soft and strong in the same breath.",
+"I love that you treat strangers with kindness, not just people who can help you.",
+"I love how you worry about everyone before yourself — even when you shouldn't.",
+"I love your loyalty. When you commit to someone, you give everything.",
+"I love that you forgive — not because it's easy, but because your heart is bigger than your ego.",
+"I love that you don't need luxury to be happy. Your joy comes from love, not things.",
+"I love the way you handle problems — head on, never running away.",
+"I love your emotional intelligence. You read feelings better than anyone I know.",
+
+// HER FAMILY & VALUES (26-50)
+"I love that your dream is to keep your baba happy. That tells me everything about your heart.",
+"I love that you sent your father an iPhone with your own hard-earned money.",
+"I love how you carry your family's dreams on your shoulders without ever complaining.",
+"I love that being a middle child made you the strongest version of yourself.",
+"I love that you understand sacrifice — because you've been making them your whole life.",
+"I love how you talk about your family. The love in your voice is unmistakable.",
+"I love your values — they weren't taught by wealth, they were built by character.",
+"I love that you measure success by your father's smile, not by your bank account.",
+"I love that you dream of providing for your parents, not of designer bags.",
+"I love that poverty didn't break you — it built you into someone extraordinary.",
+"I love that you never use your struggles as excuses. You use them as fuel.",
+"I love how responsible you are with money — every rupee matters to you and that's admirable.",
+"I love your connection to Jhapa. Where you come from made you who you are.",
+"I love that family isn't just a word to you — it's the center of your entire universe.",
+"I love that you'll be the most incredible mother someday — Gaurangi is already lucky.",
+
+// HER STRENGTH & INDEPENDENCE (41-65)
+"I love that you moved to Japan alone and built a whole life by yourself.",
+"I love that you passed N2 and N3 through pure hard work and determination.",
+"I love that you graduated gaako and are now pursuing kaigosenmon gakko.",
+"I love how you handle everything on your own in a foreign country. That takes real grit.",
+"I love that you wake up every day in a country far from home and still keep going.",
+"I love that you learned Japanese — an entirely new language — and thrived.",
+"I love your work ethic. You don't wait for things to happen; you make them happen.",
+"I love that you've never asked anyone to save you. You save yourself.",
+"I love your financial independence — you earn, you save, you provide. At twenty-two.",
+"I love that you face your fears instead of hiding from them.",
+"I love that distance didn't weaken you — it revealed how strong you already were.",
+"I love that you cook for yourself, manage your apartment, study, work — all alone. All strong.",
+"I love your discipline. You push through even when nobody is watching.",
+"I love that you proved everyone wrong who doubted a girl from Jhapa could make it.",
+"I love that your struggles made you empathetic, not bitter.",
+
+// WHAT SHE DID FOR ME (56-80)
+"I love that you taught me what real love actually feels like.",
+"I love that you were my first girlfriend — and you'll be my last.",
+"I love that you pushed me to go to the gym. I'm a better person because of that.",
+"I love that you helped me quit drinking too much beer. You changed my lifestyle.",
+"I love that before you, I had no direction in life. You gave me purpose.",
+"I love that you support every single one of my career choices without hesitation.",
+"I love that you believe in my PhD journey even though it took me further from you.",
+"I love that you never once asked me to give up my dreams for our relationship.",
+"I love that you made me want to be better — not through pressure, but through love.",
+"I love that you turned an introvert into someone who believes in connection.",
+"I love that you saw something in me when even I couldn't see it in myself.",
+"I love that you stayed through my worst days. Not everyone would.",
+"I love that you challenge me — you don't just agree with everything I say.",
+"I love that you call me out when I'm wrong. That's real love, not flattery.",
+"I love that knowing you made me understand what it means to fight for someone.",
+
+// OUR RELATIONSHIP (71-100)
+"I love that we met on Tantan — the most unlikely place to find the love of your life.",
+"I love that we talked on and off for two years before meeting. The universe was writing our story.",
+"I love our Nagarkot night — the stars, the kiss, the promise. That night is sacred.",
+"I love that we said I love you for the very first time under the Himalayan sky.",
+"I love that our first date was a night stay in the mountains. We never did anything small.",
+"I love that we only had seven days together and made them feel like a lifetime.",
+"I love that 10,800 kilometers hasn't broken us. Nothing can.",
+"I love that we start and end every day with each other, even across time zones.",
+"I love that we fight constantly — and still choose each other every single time.",
+"I love that we never hang up during a fight. We stay. That's everything.",
+"I love that we are two completely opposite people who somehow make the most beautiful picture.",
+"I love that my perfectionism and your easy-going nature balance each other perfectly.",
+"I love that my smartness complements your emotional wisdom.",
+"I love our video calls — even the ones where we just sit in silence together.",
+"I love that you make distance feel like just a number.",
+"I love that fourteen hours of time difference hasn't stopped a single 'good morning'.",
+"I love that your goodnight message arrives at my midnight and makes my darkness bright.",
+"I love every fight we survived. Each one made us stronger.",
+"I love that 'giving up' has never been an option for either of us.",
+"I love that we chose the hard path — long distance — and we're still walking it together.",
+
+// HER BEAUTY & LITTLE THINGS (91-120)
+"I love your eyes — I can see kindness in them even through a grainy video call.",
+"I love the way you smile when you're happy. It's the most natural thing in the world.",
+"I love how you look when you're sleepy on a late-night call.",
+"I love your voice. Even saying ordinary things, it sounds like home.",
+"I love the expressions you make when you're annoyed with me. Even those are adorable.",
+"I love watching you cook during video calls. You don't know it, but I screenshot those moments.",
+"I love the way you dress up when we have a 'video date'. You still make an effort.",
+"I love your handwriting — even your text messages have personality.",
+"I love how you get excited about small things. That joy is contagious.",
+"I love the way you eat — with full enjoyment, no pretending to be delicate.",
+"I love your morning voice. Sleepy and soft and completely you.",
+"I love how your face changes when you're about to cry — and how brave you try to be.",
+"I love that you still get butterflies when I compliment you, even after all this time.",
+"I love the little Nepali words you use that nobody else would understand.",
+"I love when you randomly send me photos of your day in Omiya.",
+
+// DEEPER EMOTIONAL REASONS (116-150)
+"I love you because you chose me. Out of everyone, across all that distance, you chose me.",
+"I love you because you didn't fall for my perfections — you accepted my mess.",
+"I love you because you stayed when it would have been easier to leave.",
+"I love you because you make me believe I'm worthy of love.",
+"I love you because you showed me that vulnerability is not weakness.",
+"I love you because you fight for us even when you're tired of fighting everything else.",
+"I love you because you trust me with your insecurities — that's the greatest honor.",
+"I love you because your love has no conditions. You don't love me 'because' — you just love me.",
+"I love you because you carry so much weight and still have room in your heart for me.",
+"I love you because even on your worst days, you still ask if I've eaten.",
+"I love you because when the world feels heavy, hearing your voice makes it light.",
+"I love you because you're not trying to be perfect. You're trying to be real. And you succeed.",
+"I love you because you handle your pain with grace that most people will never understand.",
+"I love you because you remind me what matters — it's not money, status, or degrees. It's this.",
+"I love you because despite every reason the world gives you to be cynical, you still believe in love.",
+"I love you because you chose love over fear, every single time.",
+"I love you because you make me want to wake up early and work harder.",
+"I love you because you're building your life from scratch and that's the most attractive thing.",
+"I love you because when you look at me, I feel like the only person in the world.",
+"I love you because three years in, I still feel my heart skip when your call comes in.",
+
+// HER SUPPORT & PARTNERSHIP (141-170)
+"I love that you supported my decision to come to America, even though it meant more distance.",
+"I love that you never guilt-tripped me about choosing my career.",
+"I love that you celebrate my small wins as if they were your own.",
+"I love that you stay up late just to match my time zone sometimes.",
+"I love that you listen to my problems even when yours are heavier.",
+"I love that you push me forward when I want to give up.",
+"I love that you believe in us — in our future — even when things look impossible.",
+"I love that you don't need me to be perfect. You just need me to be present.",
+"I love that you respect my space when I need it, even when it's hard for you.",
+"I love that you always come back after every fight. That's courage, mutu.",
+"I love that even when you're angry at me, you still care about my well-being.",
+"I love that your support isn't just words — it's action. You show up. Always.",
+"I love our ability to talk about hard things — not many couples can do that.",
+"I love that we've built something real in the hardest possible circumstances.",
+"I love that we don't give up when things get ugly. We stay in the room and figure it out.",
+
+// OUR FUTURE & DREAMS (156-185)
+"I love that we've already named our daughter — Gaurangi. She's real to us.",
+"I love imagining a house with you — your cooking, my planning, Gaurangi's laughter.",
+"I love that our future is the reason I study harder and work out every morning.",
+"I love that we talk about growing old together as if it's already decided. Because it is.",
+"I love that we're building this future from opposite sides of the world. That's powerful.",
+"I love that distance will be zero someday — and that day will be the best day of my life.",
+"I love that everything I'm doing right now — PhD, gym, lifestyle changes — is for us.",
+"I love that you inspire me to earn more, not for money, but so I can give our family everything.",
+"I love that our love story will be the greatest story we tell Gaurangi.",
+"I love that someday I'll cook with you in our own kitchen instead of watching you through a screen.",
+"I love that our hard times now are building the easy times we'll share later.",
+"I love that we're proof long distance works — when both people refuse to quit.",
+"I love that the universe put us in the hardest situation and we said 'we'll make it work'.",
+"I love that I can see our whole future clearly — and you're in every single frame.",
+"I love that the best chapter of our story hasn't even been written yet.",
+
+// SPECIFIC MEMORIES & MOMENTS (171-200)
+"I love the first time I saw your photo on Tantan. My thumb just stopped.",
+"I love our first real conversation — when hours felt like minutes.",
+"I love the night we talked until sunrise and neither of us wanted to hang up.",
+"I love the exact moment I realized 'this is not just a crush. This is love.'",
+"I love the nervousness in my hands when I saw you for the first time in Kathmandu.",
+"I love that you were more beautiful in person than in any photo I'd ever seen.",
+"I love our drive to Nagarkot — the silence that said more than words could.",
+"I love our first kiss. Under the stars. On a mountaintop. It was cinematic and real.",
+"I love the promise we made that night — and that we've kept it through everything.",
+"I love the seven days we had. They were short. They were eternal.",
+"I love the tears at the airport. They proved this was real.",
+"I love our first video call after you landed in Japan. We both pretended to be okay.",
+"I love every single 'I miss you' we've exchanged. Each one is a tiny love letter.",
+"I love the fights that ended with 'I'm sorry, I love you.' Those are the most real moments.",
+"I love the day I told you I got into my PhD program and you screamed louder than me.",
+
+// DAILY LIFE & HABITS (196-230)
+"I love that you remind me to eat, sleep, and rest — from across the ocean.",
+"I love that you worry about me walking home late at night.",
+"I love the random memes you send me at 3am your time.",
+"I love that you still dress up for our video dates.",
+"I love that you try to learn about my work even though it's not your field.",
+"I love that you tell me the honest truth, even when I don't want to hear it.",
+"I love that you still get jealous sometimes. It's a little annoying but mostly adorable.",
+"I love that you have your own life, your own goals, your own growth — independent of me.",
+"I love our Sunday calls that last for hours without any agenda.",
+"I love that you share your daily meals with me through photos.",
+"I love that you know my mood from a single text message. Nobody reads me like you.",
+"I love your patience with me when I'm stressed and not at my best.",
+"I love that you never compare our relationship to others. You protect what we have.",
+"I love that you chose to grow with me instead of looking for someone easier.",
+"I love our inside jokes that nobody else in the world would understand.",
+"I love the comfortable silence in our calls when we're just... existing together.",
+"I love that you know when I need space and when I need you closer.",
+"I love your taste in Nepali songs. Our playlist is a timeline of our feelings.",
+"I love that you make me laugh when I least expect it.",
+"I love the effort you put into this relationship every single day. I see it. I feel it.",
+
+// PHILOSOPHICAL & DEEP (221-260)
+"I love you because family background doesn't define a person's worth — character does. And yours is gold.",
+"I love you because education doesn't make someone lovable — a genuine heart does. And yours is the most genuine.",
+"I love you because the girl from Jhapa has more courage than most people with degrees and money.",
+"I love you because you asked 'why do you love me?' and that question itself proves your humility.",
+"I love you because you don't see your own beauty — and that makes it even more radiant.",
+"I love you because you measure yourself by the wrong rulers. You are extraordinary.",
+"I love you because I don't love you 'despite' your background — your background is part of what made you incredible.",
+"I love you because the world values status and wealth, but I value truth and heart. You are both.",
+"I love you because you deserve to be loved loudly, proudly, and without conditions.",
+"I love you because you've been through more at 22 than most people face in a lifetime.",
+"I love you because strength isn't about where you start — it's about how far you climb. And you've climbed mountains.",
+"I love you because the most precious things in life — kindness, loyalty, love — can't be bought. You have them all.",
+"I love you because I would choose you in every timeline, every universe, every version of this life.",
+"I love you because our love was never easy — and that's exactly what makes it rare.",
+"I love you because you're proof that the best people come from the hardest places.",
+
+// MORE SPECIFIC & PERSONAL (246-290)
+"I love that you care about my health more than I do.",
+"I love that you've helped me become more emotionally open.",
+"I love that you make me want to be a better man — not for my ego, but for you.",
+"I love your ability to forgive me after I've hurt you. I don't take that lightly.",
+"I love that you've seen my worst and still see my best.",
+"I love that you try to understand my introversion instead of being frustrated by it.",
+"I love that I can tell you anything without fear of judgment.",
+"I love that you're the first person I want to call when something good happens.",
+"I love that you're the first person I want to call when something bad happens too.",
+"I love that you remember small details about me that even I forget.",
+"I love how you handle pressure — you bend but you never break.",
+"I love your sense of humor. It's not loud — it's clever and warm.",
+"I love that being with you feels like coming home, even when home is 10,800 km away.",
+"I love that you gave me the courage to be myself without apology.",
+"I love your perseverance. You never quit. On anything. On us.",
+"I love that you turn ordinary moments into memories worth keeping.",
+"I love that you take care of everyone but forget to take care of yourself — let me do that for you.",
+"I love that I trust you completely. In a world of doubts, you're my only certainty.",
+"I love your simple dreams — they're not about fame or money. They're about love and family.",
+"I love that you'd rather be poor and happy than rich and lonely.",
+"I love that you read books to impress me. That effort meant more than you'll ever know.",
+"I love that you watched Devdas and we cried about it together from different countries.",
+"I love the sound of your name. Namita. It's the most beautiful word I know.",
+"I love that you make me feel like I'm not alone in this world.",
+"I love that you brought color into a life that was becoming gray.",
+
+// CLOSING REASONS (276-365)
+"I love that you're building yourself from nothing — and that 'nothing' is becoming everything.",
+"I love that someday our children will know how their parents loved across oceans.",
+"I love your resilience. Life knocked you down and you got up every time. Every. Single. Time.",
+"I love that you never asked the world for pity. You asked it for a chance. And you earned it.",
+"I love that your love language is acts of care — feeding me, checking on me, worrying about me.",
+"I love that you text me first even when you're upset with me. Your love is bigger than your anger.",
+"I love that you dream in both Nepali and Japanese now. That's incredible.",
+"I love that you work so hard yet still find time to be soft with me.",
+"I love your faith in us. Even when I doubted, you held on.",
+"I love the way you look at the future — not with fear, but with hope.",
+"I love your belly laugh. The uncontrollable one. It's my favorite sound in the world.",
+"I love your late-night confessions when you're sleepy and unfiltered.",
+"I love that you taught me relationships aren't about perfection — they're about persistence.",
+"I love your kindness to strangers. It shows who you really are when nobody's watching.",
+"I love that you make the miles between us feel like centimeters in the heart.",
+"I love that I've become a morning person because of you. Who would've thought?",
+"I love how you get shy when I stare at you too long on a video call.",
+"I love your determination to give Gaurangi a life better than your own childhood.",
+"I love that you turned a dating app match into the love story of my life.",
+"I love you for asking 'why do you love me?' — because now you have 365 answers.",
+"I love you. Just that. All of that. Unconditionally. Today, tomorrow, and every day until I stop breathing. — Your Baby ❤️",
+// Padding to 365 with variations
+"I love your morning selfies — messy hair and all. You're beautiful without trying.",
+"I love that you've never once told me to choose between my dreams and you.",
+"I love that we can argue about something stupid and laugh about it an hour later.",
+"I love your independence — you don't need me, you choose me. That's more powerful.",
+"I love that you know the difference between being alone and being lonely — and you've survived both.",
+"I love that your smile in photos makes me smile automatically, no matter what kind of day I'm having.",
+"I love that you still try to cook Nepali food in Japan. It's a little taste of home for both of us.",
+"I love that you introduced me to songs I never would have found on my own.",
+"I love your ambition. You're not just surviving in Japan — you're building something.",
+"I love that you can be goofy and serious in the same conversation.",
+"I love that our relationship has made us both better humans.",
+"I love how you calm me down when my overthinking spirals out of control.",
+"I love that you trust the process of us — even when the timeline is uncertain.",
+"I love that you pray for us. Whether you tell me or not, I know you do.",
+"I love that you don't compare me to anyone else. You love the specific me, flaws included.",
+"I love your sleepy 'I love you' right before you drift off on a call. It's the purest thing I've heard.",
+"I love that you'll re-read this jar every day and know — you are deeply, truly, endlessly loved.",
+"I love that you exist. In a world of billions, somehow I found you. Somehow you found me.",
+"I love that we're writing a love story that most people only see in movies.",
+"I love that the distance made our love deeper, not weaker.",
+"I love that I can close my eyes and feel you right next to me.",
+"I love that you make me want to succeed — not for money, but so I can build a life worthy of you.",
+"I love that someday soon, distance will just be a memory. And we'll laugh about how hard it was.",
+"I love that you wake up every morning and choose this — choose us — choose me.",
+"I love that on your 23rd birthday, I can tell the whole universe: she's mine. And I'm hers. Forever. 🌸",
+"I love that this is reason number 326 and I'm still not running out of things to say about you.",
+"I love your quiet strength — the kind that doesn't need an audience.",
+"I love that you've grown so much in three years but stayed the same person at your core.",
+"I love that our fights prove we care enough to be honest with each other.",
+"I love that you're the only person who makes me feel completely at peace.",
+"I love that you think you're ordinary — when you're the most extraordinary person in my world.",
+"I love how you scrunch your nose when you disagree with something.",
+"I love that our love isn't perfect, and that's exactly what makes it perfect.",
+"I love that you never gave up on us during the darkest moments of long distance.",
+"I love your ability to find joy in the smallest things — a good meal, a sunny day, a kind word.",
+"I love that you make me feel like the luckiest person alive, even on my worst days.",
+"I love that we've proven that love isn't about proximity — it's about priority.",
+"I love that you're my person. The one I choose. Every day. Without hesitation.",
+"I love that three years ago, my thumb paused on a screen — and my whole life changed forever.",
+"I love that this is reason 339, and my love for you is deeper than any words could carry.",
+"I love that someday we'll sit on our porch together and remember how crazy this all was.",
+"I love that the girl who asked 'why do you love me?' has 365 answers staring back at her now.",
+"I love you because you're you. That's always been enough. Happy Birthday, Mutu. 🌸",
+"I love that our best days are still ahead of us.",
+"I love that someday I'll kiss you good morning in person instead of through a screen.",
+"I love that you made me believe in forever.",
+"I love that when people ask me about love, I only have one story to tell — ours.",
+"I love that on March 23, 2003, in Jhapa, a girl was born who would one day change a boy's entire life.",
+"I love that right now, wherever you are in Omiya, reading this, you're smiling. And that smile is everything.",
+"I love that I wrote 365 reasons and could write 365 more without pausing.",
+"I love that you are my beginning, my middle, and my forever ending.",
+"I love that today is your birthday, and I get to love you for another year. And another. And another.",
+"I love that after all this — every word, every reason, every line — the simplest truth remains: I just love you, Namita. Completely. Endlessly. Timelessly. तिम्रै लागि — सधैँ, सधैँ, सधैँ ❤️"
+];
+// Pad if needed
+while(R.length<365)R.push("I love you. That's it. That's the reason. ❤️");
+
+const hF=document.getElementById('hFill');
+for(let i=0;i<45;i++){const s=document.createElement('span');s.className='hearts-fill';s.textContent=['💕','💗','💖','🩷','🤍'][Math.floor(Math.random()*5)];s.style.animationDelay=Math.random()*4+'s';s.style.fontSize='.7rem';hF.appendChild(s)}
+
+let rIdx=0;
+function pullReason(){
+  const n=document.getElementById('noteArea');
+  const r=R[rIdx%R.length];
+  rIdx++;
+  n.innerHTML=`<div class="note-card"><p>"${r}"</p><div class="nnum">Reason #${rIdx} of 365</div></div>`;
+}
+window.pullReason=pullReason;
+
+// ====== AUDIO PLAYER ======
+const audio=document.getElementById('audio');
+const playBtn=document.getElementById('playBtn');
+const vinyl=document.getElementById('vinyl');
+const progBar=document.getElementById('progBar');
+const curTime=document.getElementById('curTime');
+const durTime=document.getElementById('durTime');
+
+function fmt(s){const m=Math.floor(s/60);const sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec}
+
+audio.addEventListener('loadedmetadata',()=>{durTime.textContent=fmt(audio.duration)});
+audio.addEventListener('timeupdate',()=>{
+  if(audio.duration){
+    progBar.style.width=(audio.currentTime/audio.duration*100)+'%';
+    curTime.textContent=fmt(audio.currentTime);
+  }
+});
+audio.addEventListener('ended',()=>{playBtn.textContent='▶';vinyl.classList.remove('spinning')});
+
+function togglePlay(){
+  if(audio.paused){audio.play();playBtn.textContent='⏸';vinyl.classList.add('spinning')}
+  else{audio.pause();playBtn.textContent='▶';vinyl.classList.remove('spinning')}
+}
+window.togglePlay=togglePlay;
+
+function seekAudio(e){
+  const rect=document.getElementById('progWrap').getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  audio.currentTime=pct*audio.duration;
+}
+window.seekAudio=seekAudio;
+</script>
+</body>
+</html>
